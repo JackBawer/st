@@ -100,7 +100,7 @@ char *termname = "st-256color";
 unsigned int tabspaces = 4;
 
 /* bg opacity */
-float alpha = 0.8;
+float alpha = 0.55;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
@@ -195,8 +195,9 @@ ResourcePref resources[] = {
 		{ "color13",      STRING,  &colorname[13] },
 		{ "color14",      STRING,  &colorname[14] },
 		{ "color15",      STRING,  &colorname[15] },
-		{ "background",   STRING,  &colorname[259] },
-		{ "foreground",   STRING,  &colorname[258] },
+		/* background should map to colorname[258], foreground to colorname[259] */
+		{ "background",   STRING,  &colorname[258] },
+		{ "foreground",   STRING,  &colorname[259] },
 		{ "cursorColor",  STRING,  &colorname[256] },
 		{ "termname",     STRING,  &termname },
 		{ "shell",        STRING,  &shell },
@@ -209,7 +210,6 @@ ResourcePref resources[] = {
 		{ "cwscale",      FLOAT,   &cwscale },
 		{ "chscale",      FLOAT,   &chscale },
 };
-
 /*
  * Internal mouse shortcuts.
  * Beware that overloading Button1 will disable the selection.

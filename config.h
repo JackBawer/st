@@ -100,33 +100,33 @@ char *termname = "st-256color";
 unsigned int tabspaces = 4;
 
 /* bg opacity */
-float alpha = 0.5;
+float alpha = 0.55;
 
 /* Terminal colors (16 first used in escape sequence) */
-// *static const char *colorname[] = {
-//	"#282828", /* hard contrast: #1d2021 / soft contrast: #32302f */
-//	"#cc241d",
-//	"#98971a",
-//	"#d79921",
-//	"#458588",
-//	"#b16286",
-//	"#689d6a",
-//	"#a89984",
-//	"#928374",
-//	"#fb4934",
-//	"#b8bb26",
-//	"#fabd2f",
-//	"#83a598",
-//	"#d3869b",
-//	"#8ec07c",
-//	"#ebdbb2",
-//	[255] = 0,
-//	/* more colors can be added after 255 to use with DefaultXX */
-//	"#add8e6", /* 256 -> cursor */
-//	"#555555", /* 257 -> rev cursor*/
-//	"#282828", /* 258 -> bg */
-//	"#ebdbb2", /* 259 -> fg */
-//}; 
+static const char *colorname[] = {
+	"#282828", /* hard contrast: #1d2021 / soft contrast: #32302f */
+	"#cc241d",
+	"#98971a",
+	"#d79921",
+	"#458588",
+	"#b16286",
+	"#689d6a",
+	"#a89984",
+	"#928374",
+	"#fb4934",
+	"#b8bb26",
+	"#fabd2f",
+	"#83a598",
+	"#d3869b",
+	"#8ec07c",
+	"#ebdbb2",
+	[255] = 0,
+	/* more colors can be added after 255 to use with DefaultXX */
+	"#add8e6", /* 256 -> cursor */
+	"#555555", /* 257 -> rev cursor*/
+	"#282828", /* 258 -> bg */
+	"#ebdbb2", /* 259 -> fg */
+}; 
 
 
 /*
@@ -195,8 +195,9 @@ ResourcePref resources[] = {
 		{ "color13",      STRING,  &colorname[13] },
 		{ "color14",      STRING,  &colorname[14] },
 		{ "color15",      STRING,  &colorname[15] },
-		{ "background",   STRING,  &colorname[259] },
-		{ "foreground",   STRING,  &colorname[258] },
+		/* background should map to colorname[258], foreground to colorname[259] */
+		{ "background",   STRING,  &colorname[258] },
+		{ "foreground",   STRING,  &colorname[259] },
 		{ "cursorColor",  STRING,  &colorname[256] },
 		{ "termname",     STRING,  &termname },
 		{ "shell",        STRING,  &shell },
@@ -209,7 +210,6 @@ ResourcePref resources[] = {
 		{ "cwscale",      FLOAT,   &cwscale },
 		{ "chscale",      FLOAT,   &chscale },
 };
-
 /*
  * Internal mouse shortcuts.
  * Beware that overloading Button1 will disable the selection.
