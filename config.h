@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Liberation Mono:pixelsize=22:antialias=true:autohint=true";
+static char *font = "Iosevka:pixelsize=24:antialias=true:autohint=true";
 /* Spare fonts */
 static char *font2[] = {
 "NotoColorEmoji:pixelsize=22:antialias=true:autohint=true",
@@ -221,10 +221,10 @@ ResourcePref resources[] = {
 
 static MouseShortcut mshortcuts[] = {
     /* mask                 button   function        argument       release */
-    { XK_ANY_MOD,            Button4, kscrollup,      {.i = 3} },
-    { XK_ANY_MOD,            Button5, kscrolldown,    {.i = 3} },
-    { TERMMOD,               Button2, selpaste,       {.i = 0},      1 },
-    { XK_ANY_MOD,            Button2, clippaste,      {.i = 0},      1 },
+	{ XK_ANY_MOD,           Button4, kscrollup,      {.i = 1},		0, /* !alt */ -1 },
+	{ XK_ANY_MOD,           Button5, kscrolldown,    {.i = 1},		0, /* !alt */ -1 },
+    { XK_ANY_MOD,           Button2, selpaste,       {.i = 0},      1 },
+    { XK_ANY_MOD,           Button2, clippaste,      {.i = 0},      1 },
     //{ ShiftMask,            Button4, ttysend,        {.s = "\033[5;2~"} },
     //{ XK_ANY_MOD,           Button4, ttysend,        {.s = "\031"} },
     //{ ShiftMask,            Button5, ttysend,        {.s = "\033[6;2~"} },
@@ -240,9 +240,9 @@ static Shortcut shortcuts[] = {
     { XK_ANY_MOD,           XK_Print,       printsel,       {.i =  0} },
     { Mod1Mask,             XK_equal,       zoom,           {.f = +1} },
     { Mod1Mask,             XK_minus,       zoom,           {.f = -1} },
-    { Mod1Mask,             XK_BackSpace,   zoomreset,      {.f =  0} },
-    { TERMMOD,              XK_C,           clipcopy,       {.i =  0} },
-    { TERMMOD,              XK_V,           clippaste,      {.i =  0} },
+    { Mod1Mask,             XK_0,           zoomreset,      {.f =  0} },
+    { MODKEY,              XK_c,           clipcopy,       {.i =  0} },
+    { MODKEY,              XK_v,           clippaste,      {.i =  0} },
     { ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
     { TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
     { ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
