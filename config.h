@@ -5,10 +5,19 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Iosevka:pixelsize=24:antialias=true:autohint=true";
+
+// static char *font = "Iosevka Nerd Font Mono:style=Regular:size=17:antialias=true:autohint=true";
+//
+// static char *font2[] = {
+//     "Iosevka Nerd Font Mono:style=Regular:size=17:antialias=true:autohint=true",
+// };
+
+static char *font = "Iosevka Term:style=Regular:size=17:antialias=true:autohint=true";
+// static char *font = "monospace:size=15:antialias=true:autohint=true";
 /* Spare fonts */
 static char *font2[] = {
-"NotoColorEmoji:pixelsize=22:antialias=true:autohint=true",
+// "NotoColorEmoji:pixelsize=22:antialias=true:autohint=true",
+"Iosevka Term:style=Regular:size=17:antialias=true:autohint=true",
 /*	"Hack Nerd Font Mono:pixelsize=11:antialias=true:autohint=true", */
 };
 
@@ -47,11 +56,11 @@ static unsigned int doubleclicktimeout = 300;
 static unsigned int tripleclicktimeout = 600;
 
 /* alt screens */
-int allowaltscreen = 1;
+int allowaltscreen = 0;
 
 /* allow certain non-interactive (insecure) window operations such as:
    setting the clipboard text */
-int allowwindowops = 0;
+int allowwindowops = 1;
 
 /*
  * draw latency range in ms - from new content/keypress/etc until drawing.
