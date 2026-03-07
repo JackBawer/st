@@ -1164,9 +1164,23 @@ tscrollup(int orig, int n, int copyhist)
 void
 selscroll(int orig, int n)
 {
+	/* No selection, or selection is for other screen */
 	if (sel.ob.x == -1 || sel.alt != IS_SET(MODE_ALTSCREEN))
 		return;
 
+	/*
+	 * orig == 0 is used by this build for user scrollback (see kscrollup/down).
+	 * For scrollback, keep selection active while moving the viewport.
+	 * Do NOT selclear() just because the viewport moved.
+	 */
+	if (orig == 0) {
+		sel.ob.y += n;
+		sel.oe.y += n;
+		selnormalize();
+		return;
+	}
+
+	/* Original behavior for "real" terminal scrolling */
 	if (BETWEEN(sel.nb.y, orig, term.bot) != BETWEEN(sel.ne.y, orig, term.bot)) {
 		selclear();
 	} else if (BETWEEN(sel.nb.y, orig, term.bot)) {
